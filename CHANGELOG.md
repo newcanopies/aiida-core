@@ -1,6 +1,57 @@
 # Changelog
 
 
+## v1.3.0
+
+### Improvements
+- Comprehensive restructuring and revamp of the online documentation [[#4141]](https://github.com/aiidateam/aiida-core/pull/4141)
+- Improving SSH configuration defaults [[#4055]](https://github.com/aiidateam/aiida-core/pull/4055)
+
+### Performance
+- Reinstate broadcast subscription of workchain for child processes [[#4154]](https://github.com/aiidateam/aiida-core/pull/4154)
+- Increase the default for `runner.poll.interval` config option to 60 [[#4150]](https://github.com/aiidateam/aiida-core/pull/4150)
+- Increase the efficiency of the `SqlaGroup.nodes` iterator [[#4094]](https://github.com/aiidateam/aiida-core/pull/4094)
+
+### Features
+- Add a progress bar for export and import related functionality [[#3599]](https://github.com/aiidateam/aiida-core/pull/3599)
+- Enable loading config.yml files from URL for ceratin `verdi` commands [[#3977]](https://github.com/aiidateam/aiida-core/pull/3977)
+- `QueryBuilder`: add the `flat` argument to the `.all()` method [[#3945]](https://github.com/aiidateam/aiida-core/pull/3945)
+- `verdi status`: add `--no-rmq` flag to skip the RabbitMQ check [[#4181]](https://github.com/aiidateam/aiida-core/pull/4181)
+- Add support for process functions in `verdi plugin list` [[#4117]](https://github.com/aiidateam/aiida-core/pull/4117)
+- Allow profile selection ipython magic %aiida [[#4071]](https://github.com/aiidateam/aiida-core/pull/4071)
+- Support more complex formula formats in `aiida.orm.data.cif.parse_formula` [[#3954]](https://github.com/aiidateam/aiida-core/pull/3954)
+
+### Bug fixes
+- Fix the unhandled failure mechanism of the `BaseRestartWorkChain` [[#4155]](https://github.com/aiidateam/aiida-core/pull/4155)
+- Fix bug in `BaseRestartWorkChain.inspect_process` [[#4166]](https://github.com/aiidateam/aiida-core/pull/4166)
+- Fix exception handling in commands calling `list_repository_contents` [[#3968]](https://github.com/aiidateam/aiida-core/pull/3968)
+- Fix bug in `Code.get_full_text_info` [[#4083]](https://github.com/aiidateam/aiida-core/pull/4083)
+- Fix bug in `verdi daemon restart --reset` [[#3969]](https://github.com/aiidateam/aiida-core/pull/3969)
+- Fix tab-completion for `LinkManager` and `AttributeManager` [[#3985]](https://github.com/aiidateam/aiida-core/pull/3985)
+- `CalcJobResultManager`: fix bug that broke tab completion [[#4187]](https://github.com/aiidateam/aiida-core/pull/4187)
+- `SshTransport.gettree`: allow non-existing nested target directories [[#4175]](https://github.com/aiidateam/aiida-core/pull/4175)
+- `CalcJob`: move job resource validation to the `Scheduler` class fixing a problem for the SGE and LSF scheduler plugins [[#4192]](https://github.com/aiidateam/aiida-core/pull/4192)
+- `WorkChain`: guarantee to maintain order of appended awaitables [[#4156]](https://github.com/aiidateam/aiida-core/pull/4156)
+- Add support for binary files to the various `verdi` cat commands [[#4077]](https://github.com/aiidateam/aiida-core/pull/4077)
+- Ensure `verdi group show --limit` respects limit even in raw mode [[#4092]](https://github.com/aiidateam/aiida-core/pull/4092)
+- `QueryBuilder`: fix type string filter generation for `Group` subclasses [[#4144]](https://github.com/aiidateam/aiida-core/pull/4144)
+- Raise when calling `Node.objects.delete` for node with incoming links [[#4168]](https://github.com/aiidateam/aiida-core/pull/4168)
+- Properly handle multiple requests to threaded REST API [[#3974]](https://github.com/aiidateam/aiida-core/pull/3974)
+- `NodeTranslator`: do not assume `get_export_formats` exists [[#4188]](https://github.com/aiidateam/aiida-core/pull/4188)
+- Reinstate highlighting of selected nodes in generated images of provenance graph [[#4081]](https://github.com/aiidateam/aiida-core/pull/4081)
+- Only color directories in `verdi node repo ls --color` [[#4195]](https://github.com/aiidateam/aiida-core/pull/4195)
+
+### Developers
+- Add arithmetic workflows and restructure calculation plugins [[#4124]](https://github.com/aiidateam/aiida-core/pull/4124)
+- Add minimal `mypy` run to the pre-commit hooks. [[#4176]](https://github.com/aiidateam/aiida-core/pull/4176)
+- Fix timeout in `tests.cmdline.commands.test_process:test_pause_play_kill` [[#4052]](https://github.com/aiidateam/aiida-core/pull/4052)
+- Revise update-dependency flow to resolve issue #3930 [[#3957]](https://github.com/aiidateam/aiida-core/pull/3957)
+- Add GitHub action for transifex upload [[#3958]](https://github.com/aiidateam/aiida-core/pull/3958)
+
+### Deprecations
+- The `get_valid_schedulers` class method of the `Scheduler` class has been deprecated in favor of `aiida.plugins.entry_point.get_entry_point_names` [[#4192]](https://github.com/aiidateam/aiida-core/pull/4192)
+
+
 ## v1.2.1
 
 In the fixing of three bugs, three minor features have been added along the way.
